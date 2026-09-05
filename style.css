@@ -300,6 +300,11 @@ nav {
 .link:hover::after { width: 100%; left: 0; }
 .link:focus-visible { outline: 1px solid var(--ink-45); outline-offset: 4px; }
 
+/* 移动端触摸反馈 */
+@media (hover: none) {
+  .link:active { opacity: .7; transform: scale(.96); }
+}
+
 /* ============================================================
    页脚
    ============================================================ */
@@ -330,6 +335,8 @@ footer {
   padding: 40px 48px;
   text-align: center;
   max-width: 360px; width: 88vw;
+  max-height: 85vh;
+  overflow-y: auto;
   transform: translateY(20px) scale(.96);
   transition: transform .4s cubic-bezier(.22,.61,.36,1);
 }
@@ -392,15 +399,98 @@ footer {
 /* ============================================================
    响应式
    ============================================================ */
-@media (max-width: 640px) {
-  nav { flex-wrap: wrap; justify-content: center; row-gap: 4px; max-width: 92vw; }
-  footer { flex-direction: column; gap: 8px; text-align: center; }
-  .divider { height: 40px; margin: 28px auto 22px; }
+
+/* ---------- 手机：关闭纹理、收窄背景 ---------- */
+@media (max-width: 768px) {
+  .grain { display: none; }
+  .bg-wrap { inset: 0; }
 }
 
+/* ---------- 手机竖屏 ---------- */
+@media (max-width: 480px) {
+  .page {
+    padding: clamp(16px, 3vh, 32px) 20px;
+    padding-left:  max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
+  }
+
+  header { font-size: 11px; letter-spacing: .25em; }
+
+  h1 { font-size: clamp(36px, 12vw, 56px); }
+
+  .greeting {
+    font-size: 10px; letter-spacing: .3em; text-indent: .3em;
+    margin-bottom: 18px;
+  }
+
+  .role {
+    font-size: 12px; letter-spacing: .15em; text-indent: .15em;
+    margin-top: 14px;
+    word-break: keep-all;
+  }
+
+  .divider { height: 36px; margin: 24px auto 18px; }
+
+  .quote {
+    font-size: 13px; letter-spacing: .1em;
+    padding: 0 8px;
+  }
+
+  nav {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px 0;
+    max-width: 100%;
+  }
+
+  .link { padding: 10px 6px 14px; }
+  .link .zh { font-size: 14px; letter-spacing: .2em; }
+  .link .en { font-size: 9px; }
+
+  footer {
+    flex-direction: column; gap: 6px;
+    text-align: center; font-size: 10px;
+  }
+
+  .modal { padding: 28px 24px; }
+  .modal-title { font-size: 20px; margin-bottom: 18px; }
+  .modal-qrcode { width: 150px; height: 150px; }
+}
+
+/* ---------- 小屏 / 折叠屏 ---------- */
+@media (max-width: 360px) {
+  h1 { font-size: clamp(30px, 11vw, 46px); }
+  .greeting { font-size: 9px; }
+  .role { font-size: 11px; }
+  .quote { font-size: 12px; }
+  .link .zh { font-size: 13px; }
+}
+
+/* ---------- 平板 / 中等屏幕 ---------- */
+@media (min-width: 481px) and (max-width: 768px) {
+  nav { gap: clamp(12px, 3vw, 32px); }
+  h1 { font-size: clamp(42px, 7vw, 72px); }
+}
+
+/* ---------- 矮屏（横屏手机等） ---------- */
+@media (max-height: 680px) {
+  .greeting { margin-bottom: 12px; }
+  .divider { height: 30px; margin: 18px auto 14px; }
+  nav { margin-top: 20px; }
+}
+
+/* ---------- 极矮屏（允许滚动） ---------- */
 @media (max-height: 620px) {
   body { overflow: auto; }
   .page { height: auto; min-height: 100dvh; }
+}
+
+/* ---------- 刘海屏 / 灵动岛底部安全区 ---------- */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  footer {
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
