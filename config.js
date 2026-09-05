@@ -36,6 +36,7 @@ const CONFIG = {
     // 改动图片后请同步修改此处
     images: [
       '1.png',
+      '2.png',
     ],
   },
 
