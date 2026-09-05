@@ -20,11 +20,14 @@ const CONFIG = {
   },
 
   /* ---------- 导航链接 ---------- */
+  // type: 'link'  → 跳转外链（默认）
+  // type: 'modal' → 点击弹窗展示 content（支持多行，用 \n 分隔）
   nav: [
-    { zh: '博客', en: 'Blog',   href: 'https://blog.colin8.cn/' },
-    { zh: '摄影', en: 'Photo',  href: 'https://94iphotograph.lofter.com/' },
-    { zh: '代码', en: 'GitHub', href: 'https://github.com/lin819747263' },
-    { zh: '简历', en: 'Resume', href: './resume.pdf' },
+    { zh: '博客', en: 'Blog',       href: 'https://blog.colin8.cn/' },
+    { zh: '摄影', en: 'Photo',      href: 'https://94iphotograph.lofter.com/' },
+    { zh: '代码', en: 'GitHub',     href: 'https://github.com/lin819747263' },
+    { zh: '简历', en: 'Resume',     href: './resume.pdf' },
+    { zh: '公众号', en: 'Official', type: 'modal', content: '帅果', qrcode: 'photos/qrcode.jpg' },
   ],
 
   /* ---------- 背景图片源 ---------- */

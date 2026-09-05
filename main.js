@@ -108,13 +108,46 @@ function navigateWithTransition(href, label, target) {
 }
 
 // 拦截导航链接点击
+const modalOverlay = document.getElementById('modalOverlay');
+const modalTitle   = document.getElementById('modalTitle');
+const modalContent = document.getElementById('modalContent');
+
+function showModal(title, content, qrcode) {
+  modalTitle.textContent = title;
+  modalContent.innerHTML = '';
+  if (qrcode) {
+    const img = document.createElement('img');
+    img.src = qrcode;
+    img.className = 'modal-qrcode';
+    img.alt = title;
+    modalContent.appendChild(img);
+  }
+  if (content) {
+    const p = document.createElement('p');
+    p.textContent = content;
+    p.className = 'modal-text';
+    modalContent.appendChild(p);
+  }
+  modalOverlay.classList.add('show');
+}
+
+function hideModal() {
+  modalOverlay.classList.remove('show');
+}
+
+modalOverlay.addEventListener('click', hideModal);
+
 document.querySelectorAll('nav .link').forEach(link => {
   link.addEventListener('click', function (e) {
     e.preventDefault();
-    const href   = this.href;
-    const label  = this.querySelector('.zh').textContent;
-    const target = this.getAttribute('target') || '_self';
-    navigateWithTransition(href, label, target);
+    if (this.dataset.type === 'modal') {
+      showModal(this.dataset.zh, this.dataset.content, this.dataset.qrcode);
+    } else {
+      const href   = this.href;
+      const label  = this.querySelector('.zh').textContent;
+      const target = this.getAttribute('target') || '_self';
+      navigateWithTransition(href, label, target);
+    }
   });
 });
 

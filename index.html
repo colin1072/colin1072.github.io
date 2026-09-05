@@ -34,6 +34,15 @@
   <div class="mask"></div>
   <div class="grain"></div>
 
+  <!-- 弹窗 -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-content" id="modalContent"></div>
+      <div class="modal-hint">点击任意位置关闭</div>
+    </div>
+  </div>
+
   <!-- 自定义光标 -->
   <div class="cursor-ring" id="cursorRing"></div>
   <div class="cursor-dot" id="cursorDot"></div>
@@ -89,9 +98,17 @@
   CONFIG.nav.forEach((item, i) => {
     const a = document.createElement('a');
     a.className = 'link';
-    a.href = item.href;
-    a.target = '_blank';
-    a.rel = 'noopener';
+    a.dataset.type = item.type || 'link';
+    if (item.type === 'modal') {
+      a.href = 'javascript:void(0)';
+      a.dataset.zh = item.zh;
+      a.dataset.content = item.content || '';
+      a.dataset.qrcode  = item.qrcode || '';
+    } else {
+      a.href = item.href;
+      a.target = '_blank';
+      a.rel = 'noopener';
+    }
     a.innerHTML =
       `<span class="num">${String(i + 1).padStart(2, '0')}</span>` +
       `<span class="zh">${item.zh}</span>` +
