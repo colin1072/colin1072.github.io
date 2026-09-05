@@ -93,8 +93,8 @@ body {
 .mask {
   position: fixed; inset: 0; pointer-events: none;
   background:
-    radial-gradient(120% 90% at 50% 40%, transparent 30%, rgba(5,8,12,.55) 100%),
-    linear-gradient(180deg, rgba(5,8,12,.28) 0%, transparent 30%, transparent 62%, rgba(5,8,12,.48) 100%);
+    radial-gradient(80% 70% at 50% 45%, rgba(5,8,12,.35) 0%, rgba(5,8,12,.65) 100%),
+    linear-gradient(180deg, rgba(5,8,12,.4) 0%, rgba(5,8,12,.15) 30%, rgba(5,8,12,.15) 62%, rgba(5,8,12,.5) 100%);
 }
 
 .grain {
@@ -201,9 +201,9 @@ header {
   text-transform: uppercase; color: var(--ink-70);
 }
 
-.logo { font-weight: 600; color: var(--ink); }
+.logo { font-weight: 600; color: var(--ink); text-shadow: 0 1px 8px rgba(0,0,0,.5); }
 
-.clock { font-variant-numeric: tabular-nums; }
+.clock { font-variant-numeric: tabular-nums; text-shadow: 0 1px 8px rgba(0,0,0,.5); }
 
 main {
   flex: 1;
@@ -220,18 +220,21 @@ main {
   font-size: 12px; letter-spacing: .5em; text-indent: .5em;
   text-transform: uppercase; color: var(--ink-70);
   margin-bottom: 24px;
+  text-shadow: 0 1px 10px rgba(0,0,0,.5);
 }
 
 h1 {
   font-family: var(--serif); font-weight: 200; line-height: 1.15;
   font-size: clamp(46px, 8vw, 92px);
   letter-spacing: .16em; text-indent: .16em;
+  text-shadow: 0 2px 20px rgba(0,0,0,.6), 0 0 60px rgba(0,0,0,.3);
 }
 
 .role {
   margin-top: 20px; font-size: 14px;
   letter-spacing: .32em; text-indent: .32em;
   color: var(--ink-70);
+  text-shadow: 0 1px 10px rgba(0,0,0,.5);
 }
 
 .divider {
@@ -246,6 +249,7 @@ h1 {
   font-size: 14px; letter-spacing: .14em;
   color: var(--ink-70);
   transition: opacity 1s ease;
+  text-shadow: 0 1px 10px rgba(0,0,0,.5);
 }
 
 /* ============================================================
@@ -263,6 +267,7 @@ nav {
   padding: 12px 12px 16px;
   text-decoration: none; color: var(--ink-70);
   transition: color .4s ease, transform .4s ease;
+  text-shadow: 0 1px 8px rgba(0,0,0,.5);
 }
 
 .link .num {
@@ -301,6 +306,7 @@ nav {
 footer {
   display: flex; justify-content: space-between; align-items: center;
   font-size: 11px; letter-spacing: .25em; color: var(--ink-45);
+  text-shadow: 0 1px 8px rgba(0,0,0,.5);
 }
 
 /* ============================================================
